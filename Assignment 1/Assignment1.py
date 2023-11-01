@@ -4,13 +4,13 @@ import matplotlib.pyplot as plt
 from scipy import signal
 from time import sleep
 
-def x1func(x):
+def x1func(t):
     x1f = 100
-    return np.sin(x1f*x)
+    return np.sin(x1f*2*np.pi*t)
 
-def x2func(x):
+def x2func(t):
     x2f = 1000
-    return np.sin(x2f*x)
+    return np.sin(x2f*2*np.pi*t)
 
 # Time step delta t
 dt = 0.000001
@@ -24,15 +24,8 @@ t = np.arange(start_time, stop_time, dt) # (start, stop, increment)
 # Generate signals with np.sin(t)
 ###################################
 
-x1 = np.zeros(int((stop_time - start_time)/dt))
-x2 = np.zeros(int((stop_time - start_time)/dt))
-
-## 
-i = 0
-for time in t:
-    x1[i] = x1func(time)
-    x2[i] = x2func(time)
-    i+=1
+x1 = np.array([x1func(time) for time in t])
+x2 = np.array([x2func(time) for time in t])
 
 #1c
 # Play the two signals x1(t) and x2(t)
@@ -84,17 +77,13 @@ t2 = np.arange(start_time, stop_time, dt) # (start, stop, increment)
 # Generate signals with np.sin(t)
 ###################################
 
-x = np.zeros(int((stop_time - start_time)/dt)+1)
+x = np.array([h(time) for time in t2])
 
 dirac_x = np.zeros(int((stop_time - start_time)/dt)+1)
 dirac_x[0] = 1/dt
 
 dirac_y = y(dirac_x, start_time, stop_time, dt)
 
-## 
-for (i,time) in enumerate(t2):
-    
-    x[i] = h(time)
 
 # Create new figure
 fig, ax = plt.subplots()
