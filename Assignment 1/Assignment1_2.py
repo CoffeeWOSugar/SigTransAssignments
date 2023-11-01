@@ -12,20 +12,8 @@ stop_time = 1
 # Generate a time vector 't' (seconds?)
 t = np.arange(start_time, stop_time, dt) # (start, stop, increment)
 
-###################################
-# Generate signals with np.sin(t)
-###################################
 
-x1 = np.zeros(int((stop_time - start_time)/dt))
-x2 = np.zeros(int((stop_time - start_time)/dt))
-x1f = 100
-x2f = 1000
-
-def x1func(x):
-    return np.sin(x1f*x)
-
-def x2func(x):
-    return np.sin(x2f*x)
+alpha = 1000*np.pi
 
 
 ## 
@@ -38,14 +26,13 @@ for time in t:
 fig, ax = plt.subplots()
 # Plot the curve of with x-values 't' and y values 'x' into 
 # the figure 'ax' with the legend entry 'My signal'.
-ax.plot(t, x1, label='My signal 1')
-ax.plot(t, x2, label='My signal 2')
+ax.plot(t, x, label='My signal 1')
 
 ax.set_xlabel('t') 
 ax.set_ylabel('x') 
 ax.legend()
 
-plt.title('Uppgift 1b')
+plt.title('Uppgift 2a')
 
 plt.show()
 

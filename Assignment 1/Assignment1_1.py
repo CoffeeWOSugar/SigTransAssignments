@@ -7,7 +7,7 @@ from time import sleep
 # Time step delta t
 dt = 0.0005
 start_time = 0
-stop_time = 1
+stop_time = 0.5
 
 # Generate a time vector 't' (seconds?)
 t = np.arange(start_time, stop_time, dt) # (start, stop, increment)
