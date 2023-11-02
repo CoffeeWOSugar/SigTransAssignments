@@ -38,8 +38,8 @@ x2 = np.array([x2func(time) for time in t])
 fig, ax = plt.subplots()
 # Plot the curve of with x-values 't' and y values 'x' into 
 # the figure 'ax' with the legend entry 'My signal'.
-ax.plot(t, x1, label='My signal 1')
-ax.plot(t, x2, label='My signal 2')
+ax.plot(t, x1, label='x1(t)')
+ax.plot(t, x2, label='x2(t)')
 
 ax.set_xlabel('t [s]') 
 ax.set_ylabel('x []') 
