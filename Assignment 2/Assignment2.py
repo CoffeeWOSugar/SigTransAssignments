@@ -69,11 +69,13 @@ def get_nth_f_trans(n, w0, w, dw):
 w_arr = np.arange(-15*10**3, 15*10**3, 1)
 
 res_arr = np.zeros(w_arr.shape)
-for n in range(1, 100):
-    res_arr = res_arr + get_nth_f_trans(n, 2*np.pi/5, w_arr, 1)
+for n in range(1, 10000):
+    res_arr = res_arr + get_nth_f_trans(n, 2000*np.pi/5, w_arr, 1)
 
 
 Y_arr = res_arr*f_arr
+
+ang = np.angle(res_arr) + np.angle(f_arr)
 
 plt.plot(w_arr, np.absolute(res_arr), label='Magnitude of Input')
 plt.plot(w_arr, np.absolute(Y_arr), label="Magnitude of Output")
@@ -88,7 +90,7 @@ plt.clf()
 
 
 plt.plot(w_arr, np.angle(res_arr), label="Phase of Input")
-plt.plot(w_arr, np.angle(Y_arr), label="Phase of Output")
+plt.plot(w_arr, ang, label="Phase of Output")
 
 plt.xlabel("$\omega$ [rad/s]")
 plt.ylabel('Phase [rad]')
@@ -96,4 +98,48 @@ plt.ylabel('Phase [rad]')
 plt.legend()
 
 plt.savefig("2c2")
+plt.clf()
+
+
+def get_nth_f_trans_better(n):
+    bn = -2*(-1)**n/(n*np.pi)
+    "x(t) = bn*sin(n*w0*t)"
+    return -bn*1j*np.pi
+
+def y(t, N):
+    sum = 0
+    for n in range(-N, N+1):
+        if n != 0:                            
+            sum += get_nth_f_trans_better(n)*freq_response(1000*np.pi, n*2000*np.pi/5)*np.exp(1j*n*2000*np.pi/5*t) # NOTERA VÄLDIGT LITET dOMEGA
+    return sum/(2*np.pi)
+
+def x(t, N):
+    sum = 0
+    for n in range(1, N+1):
+        sum += -2*(-1)**n/(n*np.pi)*np.sin(2000*np.pi/5*n*t)
+    return sum
+
+t_arr = np.arange(0, 0.015, 0.00001)
+
+
+y_arr = y(t_arr, 1)
+print(np.sum(np.imag(y_arr)))
+plt.plot(t_arr, np.real(y_arr), label="N=1")
+
+y_arr = y(t_arr, 2)
+print(np.sum(np.imag(y_arr)))
+plt.plot(t_arr, np.real(y_arr), label="N=2")
+
+y_arr = y(t_arr, 10)
+print(np.sum(np.imag(y_arr)))
+plt.plot(t_arr, np.real(y_arr), label="N=10")
+
+y_arr = y(t_arr, 20)
+print(np.sum(np.imag(y_arr)))
+plt.plot(t_arr, np.real(y_arr), "r--", label="N=20")
+
+plt.legend()
+plt.xlabel("t [s]")
+plt.ylabel("y(t) []")
+plt.savefig("2d")
 plt.clf()
