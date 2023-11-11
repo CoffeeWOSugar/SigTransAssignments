@@ -69,7 +69,7 @@ def get_nth_f_trans(n, w0, w, dw):
 w_arr = np.arange(-15*10**3, 15*10**3, 1)
 
 res_arr = np.zeros(w_arr.shape)
-for n in range(1, 10000):
+for n in range(1, 100):
     res_arr = res_arr + get_nth_f_trans(n, 2*np.pi/5, w_arr, 1)
 
 
