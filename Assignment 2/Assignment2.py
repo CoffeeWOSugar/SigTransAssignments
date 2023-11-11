@@ -66,30 +66,34 @@ def get_nth_f_trans(n, w0, w, dw):
     arr[bool_arr] = bn*1j*np.pi/dw
     return arr
     
-w_arr = np.arange(-15*10**0, 15*10**0, 1)
+w_arr = np.arange(-15*10**3, 15*10**3, 1)
 
 res_arr = np.zeros(w_arr.shape)
-for n in range(1, 1000):
+for n in range(1, 10000):
     res_arr = res_arr + get_nth_f_trans(n, 2*np.pi/5, w_arr, 1)
 
 
-plt.plot(w_arr, np.absolute(res_arr), label='Magnitude')
+Y_arr = res_arr*f_arr
+
+plt.plot(w_arr, np.absolute(res_arr), label='Magnitude of Input')
+plt.plot(w_arr, np.absolute(Y_arr), label="Magnitude of Output")
 
 plt.xlabel('$\omega$ [rad/s]')
 plt.ylabel('Magnitude []')
 
 plt.legend()
 
-plt.savefig("2b1")
+plt.savefig("2c1")
 plt.clf()
 
 
-plt.plot(w_arr, np.angle(res_arr), label="Phase")
+plt.plot(w_arr, np.angle(res_arr), label="Phase of Input")
+plt.plot(w_arr, np.angle(Y_arr), label="Phase of Output")
 
 plt.xlabel("$\omega$ [rad/s]")
 plt.ylabel('Phase [rad]')
 
 plt.legend()
 
-plt.savefig("2b2")
+plt.savefig("2c2")
 plt.clf()
