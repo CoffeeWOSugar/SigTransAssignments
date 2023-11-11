@@ -17,4 +17,38 @@ plt.axhline(y=0, color='r', label="Even components")
 plt.legend()
 
 # Display 
-plt.show() 
+plt.savefig("1b") 
+plt.clf()
+
+
+
+def freq_response(a, w):
+    return a**2/(a+w*1j)**2
+
+w_arr = np.arange(-15*10**3, 15*10**3, 1)
+
+f_arr = freq_response(1000*np.pi, w_arr)
+
+mag_arr = np.absolute(f_arr)
+phase_arr = np.angle(f_arr)
+
+
+plt.plot(w_arr, mag_arr, label='Magnitude')
+
+plt.xlabel('$\omega$ [rad/s]')
+plt.ylabel('Magnitude []')
+
+plt.legend()
+
+plt.savefig("2a1")
+plt.clf()
+
+plt.plot(w_arr, phase_arr, label="Phase")
+
+plt.xlabel("$\omega$ [rad/s]")
+plt.ylabel('Phase [rad]')
+
+plt.legend()
+
+plt.savefig("2a2")
+plt.clf()
