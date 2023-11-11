@@ -66,10 +66,10 @@ def get_nth_f_trans(n, w0, w, dw):
     arr[bool_arr] = bn*1j*np.pi/dw
     return arr
     
-w_arr = np.arange(-15*10**3, 15*10**3, 1)
+w_arr = np.arange(-15*10**0, 15*10**0, 1)
 
 res_arr = np.zeros(w_arr.shape)
-for n in range(1, 10):
+for n in range(1, 1000):
     res_arr = res_arr + get_nth_f_trans(n, 2*np.pi/5, w_arr, 1)
 
 
