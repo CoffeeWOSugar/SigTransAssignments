@@ -52,3 +52,44 @@ plt.legend()
 
 plt.savefig("2a2")
 plt.clf()
+
+
+
+
+def get_nth_f_trans(n, w0, w, dw):
+    bn = -2*(-1)**n/(n*np.pi)
+    "x(t) = bn*sin(n*w0*t)"
+    bool_arr1 = w==round(n*w0)
+    bool_arr2 = w==-round(n*w0)
+    bool_arr = np.logical_or(bool_arr1, bool_arr2)
+    arr = np.zeros(w.shape, 'complex')
+    arr[bool_arr] = bn*1j*np.pi/dw
+    return arr
+    
+w_arr = np.arange(-15*10**3, 15*10**3, 1)
+
+res_arr = np.zeros(w_arr.shape)
+for n in range(1, 10000):
+    res_arr = res_arr + get_nth_f_trans(n, 2*np.pi/5, w_arr, 1)
+
+
+plt.plot(w_arr, np.absolute(res_arr), label='Magnitude')
+
+plt.xlabel('$\omega$ [rad/s]')
+plt.ylabel('Magnitude []')
+
+plt.legend()
+
+plt.savefig("2b1")
+plt.clf()
+
+
+plt.plot(w_arr, np.angle(res_arr), label="Phase")
+
+plt.xlabel("$\omega$ [rad/s]")
+plt.ylabel('Phase [rad]')
+
+plt.legend()
+
+plt.savefig("2b2")
+plt.clf()
