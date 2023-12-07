@@ -20,8 +20,8 @@ x1_array = x1(k_array)
 x2_array = x2(k_array)
 
 
-plt.stem(k_array, x1_array, label="x1[k]", markerfmt="b", linefmt="b")
-plt.stem(k_array, x2_array, label="x2[k]", markerfmt="g", linefmt="g")
+plt.stem(k_array, x1_array, label="$x_1[k]$", markerfmt="b", linefmt="b")
+plt.stem(k_array, x2_array, label="$x_2[k]$", markerfmt="g", linefmt="g")
 
 plt.xlabel('time step [k]')
 plt.ylabel('Amplitude []')

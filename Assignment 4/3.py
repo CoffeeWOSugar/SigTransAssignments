@@ -31,9 +31,9 @@ L = 256
 fs = 1/Ts
 fl2 = np.arange(0, L)/L*fs
 
-plt.stem(fl2, np.abs(X3b), label='X3 with zero padding')
+plt.stem(fl2, np.abs(X3b), label='$X_3$ with zero padding')
 
-plt.stem(fl, np.abs(X3), label='X3 without zero padding', markerfmt="g", linefmt="g")
+plt.stem(fl, np.abs(X3), label='$X_3$ without zero padding', markerfmt="g", linefmt="g")
 
 
 
@@ -51,7 +51,7 @@ fs = 1/Ts
 fl = np.arange(0, L)/L*fs
 
 
-plt.stem(fl, np.abs(X3), label="X3 with higher spectral resolution", markerfmt="k", linefmt="k")
+plt.stem(fl, np.abs(X3), label="$X_3$ with higher spectral resolution", markerfmt="k", linefmt="k")
 
 plt.legend()
 
