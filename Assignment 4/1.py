@@ -25,7 +25,6 @@ plt.stem(k_array, x2_array, label="x2[k]", markerfmt="g", linefmt="g")
 
 plt.xlabel('time step [k]')
 plt.ylabel('Amplitude []')
-plt.title('Stem plot')
 plt.xticks(k_array)
 
 plt.legend()
