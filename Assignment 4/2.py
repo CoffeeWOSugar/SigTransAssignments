@@ -32,8 +32,8 @@ L = 256
 fs = 1/Ts
 fl2 = np.arange(0, L)/L*fs
 
-plt.stem(fl2, np.abs(X1b), label='$X_1$ without zero padding')
-plt.stem(fl, np.abs(X1), label='$X_1$ with zero padding', markerfmt="g", linefmt="g")
+plt.stem(fl2, np.abs(X1b), label='$X_1$ with zero padding')
+plt.stem(fl, np.abs(X1), label='$X_1$ without zero padding', markerfmt="g", linefmt="g")
 
 plt.legend()
 
@@ -51,8 +51,8 @@ plt.clf()
 
 
 
-plt.stem(fl2, np.abs(X2b), label='$X_2$ without zero padding')
-plt.stem(fl, np.abs(X2), label='$X_2$ with zero padding', markerfmt="g", linefmt="g")
+plt.stem(fl2, np.abs(X2b), label='$X_2$ with zero padding')
+plt.stem(fl, np.abs(X2), label='$X_2$ without zero padding', markerfmt="g", linefmt="g")
 
 plt.legend()
 plt.xlim(-1, fs/2+1)
